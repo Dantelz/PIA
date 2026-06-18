@@ -3,7 +3,7 @@
 #   - Búsqueda Lineal: recorre el equipo principal por nombre
 #   - Búsqueda Binaria: consulta la Pokédex por ID
 
-from modulo1_pokedex import Pokemon, Pokedex
+from ej.modulo1_pokedex import Pokemon, Pokedex
 
 
 # ─────────────────────────────────────────────────────────────────────────────

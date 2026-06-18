@@ -6,15 +6,15 @@
 import os
 import sys
 
-from modulo1_pokedex import Pokemon, Pokedex
-from modulo2_entrenador import Entrenador
-from modulo3_ordenamiento import (
+from ej.modulo1_pokedex import Pokemon, Pokedex
+from ej.modulo2_entrenador import Entrenador
+from ej.modulo3_ordenamiento import (
     bubble_sort_por_nombre,
     insertion_sort_por_tipo,
     quick_sort_por_pc,
     mostrar_lista,
 )
-from modulo4_busquedas import busqueda_lineal_equipo, busqueda_binaria_pokedex
+from ej.modulo4_busquedas import busqueda_lineal_equipo, busqueda_binaria_pokedex
 
 ARCHIVO_JSON = os.path.join(os.path.dirname(__file__), "pokemon_data.json")
 

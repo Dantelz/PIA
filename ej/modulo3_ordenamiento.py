@@ -4,7 +4,7 @@
 #   - Insertion Sort → por tipo (agrupado A-Z)
 #   - Quick Sort    → por poder_combate (mayor a menor)
 
-from modulo1_pokedex import Pokemon
+from ej.modulo1_pokedex import Pokemon
 
 
 # ─────────────────────────────────────────────────────────────────────────────
