@@ -12,7 +12,7 @@ def menu():
         
         instance = hash_table.hash_table()
         for i in pokemondata:
-            hash = instance.function_hash(i["id"]) 
+            hash = instance.function_hash(i["id"], i["nombre"]) 
             instance.insert(i["id"], i["nombre"])
         
 
