@@ -5,7 +5,7 @@ import hash_table
 import hash_set  
 import json
 
-from medico import set_medals, select_gym
+from medico import set_medals, select_gym, start_medals
 
 with open("player_medals.json", "w") as f:
     json.dump([], f)
@@ -17,7 +17,9 @@ with open("C:\\Users\\Usuario\\Downloads\\Zurlo\\PIA\\el verdadero\\medallas.jso
     medallas = json.load(f)
             
 def menu():
+    start_medals(medallas)
     while True:
+
         
         instance = hash_table.hash_table()
         for i in pokemondata:
@@ -52,7 +54,7 @@ def menu():
         elif eleccion == 10:
             select_gym(medallas)
         else:  
-            print("Error! Ingreso incorrecto.")
+            print("No es una opcion")
             time.sleep(2)
 
 menu()
