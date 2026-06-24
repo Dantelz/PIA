@@ -8,7 +8,7 @@
 
 import random
 import time
-from ej.modulo1_pokedex import Pokemon, RegistroMedallas
+from modulo1_pokedex import Pokemon, RegistroMedallas
 
 MAXIMO_EQUIPO = 6
 MAXIMO_STACK_TRANSFERENCIAS = 5
