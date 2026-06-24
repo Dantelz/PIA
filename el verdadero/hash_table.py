@@ -2,8 +2,8 @@ class hash_table:
     def __init__(self, size=151):
         self.table = {}
     
-    def function_hash(self, key):
-        return hash(key) % 151
+    def function_hash(self, id, nombre) :
+        return hash(id) % 151
 
     def insert(self, key, value):
         self.table[key] = value

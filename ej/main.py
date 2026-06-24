@@ -1,7 +1,4 @@
-#!/usr/bin/env python3
-# main.py
-# Módulo 5: Menú Interactivo – "Pokémon Huergo"
-# ══════════════════════════════════════════════════════════════════════════════
+
 
 import os
 import sys
