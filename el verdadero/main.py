@@ -5,12 +5,17 @@ import hash_table
 import hash_set  
 import json
 
+from medico import set_medals, select_gym
+
+with open("player_medals.json", "w") as f:
+    json.dump([], f)
+
 with open("C:\\Users\\Usuario\\Downloads\\Zurlo\\PIA\\el verdadero\\pokemon_data.json", "r") as f:
     pokemondata = json.load(f)
 
-with open("C:\\Users\\Usuario\\Downloads\\Zurlo\\PIA\\el verdadero\\medallas.json", "r") as f:
+with open("C:\\Users\\Usuario\\Downloads\\Zurlo\\PIA\\el verdadero\\medallas.json", "r", encoding="utf=8") as f:
     medallas = json.load(f)
-
+            
 def menu():
     while True:
         
@@ -18,12 +23,6 @@ def menu():
         for i in pokemondata:
             hash = instance.function_hash(i["id"], i["nombre"]) 
             instance.insert(i["id"], i["nombre"])
-
-        set_medals = hash_set.hash_set()
-        for j in range(8):
-            set_medals.insert(None)
-            
-            
 
         print("1 >>> Ver Pokédex")
         print("2 >>> Ver Equipo Principal")
@@ -46,8 +45,12 @@ def menu():
 
         elif eleccion == 5:
             for medalla in medallas:
-                print(f"{medalla['id']}: {medalla['nombre']}")
-
+                if set_medals.contains(medalla["nombre"]):
+                    print(f"{medalla['id']} - {medalla['nombre']}")
+                else:
+                    print(f"{medalla['id']} - No obtenida")
+        elif eleccion == 10:
+            select_gym(medallas)
         else:  
             print("Error! Ingreso incorrecto.")
             time.sleep(2)
