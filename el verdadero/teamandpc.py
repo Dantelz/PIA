@@ -1,4 +1,3 @@
-from modulo1 import Pokemon
 import time
 
 class Nodo:
@@ -19,7 +18,7 @@ class Llinkedlist:
             return
 
         actual = self.head
-        while actual.siguiente:
+        while actual.siguiente: # si no existe otro pokemon frena el while
             actual = actual.siguiente
 
         actual.siguiente = nuevo
@@ -39,39 +38,13 @@ class Llinkedlist:
 equipo = []
 pc = Llinkedlist()
 
-
-def capturar_pokemon(pokemondata):
-    id_buscado = int(input("Ingrese ID del Pokémon a capturar: "))
-
-    for p in pokemondata:
-        if p["id"] == id_buscado:
-            pokemon_encontrado = Pokemon(
-                p["id"],
-                p["nombre"],
-                p["tipo"],
-                p["poder_combate"]
-            )
-            break
-
-    if pokemon_encontrado.id > 151:
-        print("No existe un Pokémon con ese ID")
-        return
-
-    if len(equipo) < 6:
-        equipo.append(pokemon_encontrado)
-        print(f"{pokemon_encontrado.nombre} fue agregado al equipo")
-    else:
-        pc.agregar(pokemon_encontrado)
-        print(f"{pokemon_encontrado.nombre} fue enviado a la PC")
-
-
 def mostrar_equipo():
     if len(equipo) == 0:
         print("El equipo esta vacio")
         return
-
-    for pokemon in equipo:
-        print(f"{pokemon.id} - {pokemon.nombre} - {pokemon.tipo} - {pokemon.poder_combate}")
+    else:
+        for pokemon in equipo:
+            print(f"{pokemon.id} - {pokemon.nombre} - {pokemon.tipo} - {pokemon.poder_combate}")
 
 
 def mostrar_pc():

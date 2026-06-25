@@ -1,7 +1,7 @@
 [ 
-  {"id": 1, "nombre": "Bulbasaur", "tipo": "Planta", "poder_combate": 318},
-  {"id": 2, "nombre": "Ivysaur", "tipo": "Planta", "poder_combate": 405},
-  {"id": 3, "nombre": "Venusaur", "tipo": "Planta", "poder_combate": 535},
+  {"id": 1, "nombre": "Bulbasaur", "tipo": "Planta/Veneno", "poder_combate": 318},
+  {"id": 2, "nombre": "Ivysaur", "tipo": "Planta/Veneno", "poder_combate": 405},
+  {"id": 3, "nombre": "Venusaur", "tipo": "Planta/Veneno", "poder_combate": 535},
   {"id": 4, "nombre": "Charmander", "tipo": "Fuego", "poder_combate": 309},
   {"id": 5, "nombre": "Charmeleon", "tipo": "Fuego", "poder_combate": 405},
   {"id": 6, "nombre": "Charizard", "tipo": "Fuego", "poder_combate": 534},

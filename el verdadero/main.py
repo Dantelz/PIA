@@ -1,12 +1,13 @@
 import os
 import sys
 import time
-import hash_table
+import hash_map
 import hash_set  
 import json
-from modulo1 import Pokemon
+from classpokemon import Pokemon
 from gyms import set_medals, select_gym, start_medals
-from modulo2 import capturar_pokemon, mostrar_equipo, mostrar_pc, equipo
+from teamandpc import mostrar_equipo, mostrar_pc, equipo
+from captura import capturar_pokemon
 
 
 with open("el verdadero\\pokemon_data.json", "r", encoding="utf-8") as f:
@@ -19,7 +20,7 @@ with open("el verdadero\\medallas.json", "r", encoding="utf-8") as f:
 def main():
     os.system("cls")
     print("Bienvenido a el Verdadero Juego de Pokémon")
-    time.sleep(2)
+    time.sleep(1)
     starters()
     menu()
 
@@ -30,11 +31,11 @@ def menu():
 
     
     while True:
-        time.sleep(2)
-        instance = hash_table.hash_table()
+        time.sleep(1.3)
+        instance = hash_map.HashMap()
         for i in pokemondata:
-            hash = instance.function_hash(i["id"], i["nombre"]) 
-            instance.insert(i["id"], i["nombre"])
+            hash = instance.hash(i["id"]) 
+            instance.agregar(i["id"], i["nombre"])
 
         print("1 >>> Ver Pokédex")
         print("2 >>> Ver Equipo Principal")
@@ -70,7 +71,7 @@ def menu():
         elif eleccion == 5:
             time.sleep(1)
             for medalla in medallas:
-                if set_medals.contains(medalla["nombre"]):
+                if set_medals.buscar(medalla["nombre"]):
                     print(f"{medalla['id']} - {medalla['nombre']}")
                 else:
                     print(f"{medalla['id']} - No obtenida")
