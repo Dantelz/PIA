@@ -1,4 +1,5 @@
 from modulo1 import Pokemon
+import time
 
 class Nodo:
     def __init__(self, pokemon):
@@ -6,7 +7,7 @@ class Nodo:
         self.siguiente = None
 
 
-class ListaEnlazada:
+class Llinkedlist:
     def __init__(self):
         self.head = None
 
@@ -31,12 +32,12 @@ class ListaEnlazada:
             return
 
         while actual:
-            p = actual.pokemon
-            print(f"{p.id} - {p.nombre} - {p.tipo} - {p.poder_combate}")
+            Pkm = actual.pokemon
+            print(f"{Pkm.id} - {Pkm.nombre} - {Pkm.tipo} - {Pkm.poder_combate}")
             actual = actual.siguiente
 
 equipo = []
-pc = ListaEnlazada()
+pc = Llinkedlist()
 
 
 def capturar_pokemon(pokemondata):

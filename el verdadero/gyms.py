@@ -3,7 +3,7 @@ import hash_set
 set_medals = hash_set.hash_set()
 
 def battle():
-    ops = ["Ganaste", "Perdiste"]
+    ops = ["Ganaste", "Perdiste","Ganaste", "Perdiste", "Ganaste", "Perdiste", "Ganaste"]
     return random.choice(ops)
 
 def select_gym(medallas):
