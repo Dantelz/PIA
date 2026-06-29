@@ -4,7 +4,7 @@ from teamandpc import equipo, pc
 
 
 def capturar_pokemon(pokemondata):
-    id_buscado = int(input("Ingrese ID del Pokémon a capturar: "))
+    id_buscado = int(input("Ingrese ID del Pokémon que queres capturar: "))
 
     for p in pokemondata:
         if p["id"] == id_buscado:

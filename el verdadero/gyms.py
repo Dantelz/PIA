@@ -11,14 +11,14 @@ def select_gym(medallas):
     id = int(input("Ingrese ID del gimnasio: "))
 
     if id not in range(1, 9):
-        print("id inválido")
+        print("id invalido")
         return
 
     medal = medallas[id - 1]
     medal_name = medal["nombre"]
 
     if set_medals.buscar(medal_name):
-        print(f"Ya tenés la {medal_name}")
+        print(f"Ya tenes la {medal_name}")
         return
 
     resultado = battle()
@@ -31,7 +31,6 @@ def select_gym(medallas):
         print(f"Ganaste la {medal_name}")
     else:
         time.sleep(1)
-        print("Perdiste")
 
 def start_medals(medallas):
     cant = 0
@@ -40,7 +39,7 @@ def start_medals(medallas):
         medal = medallas[id - 1]
         medal_name = medal["nombre"]
         if set_medals.buscar(medal_name):
-            print(f"Ya tenés la {medal_name}")
+            print(f"Ya tenes la {medal_name}")
         else:
             set_medals.agregar(medal_name)
             cant += 1

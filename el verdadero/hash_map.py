@@ -12,7 +12,7 @@ class HashMap:
 
         for k, v in bucket:
             if k == key:
-                print(f"{key} ya existe.")
+                print(f"{key} ya existe")
                 return
 
         bucket.append((key, value))
@@ -35,10 +35,10 @@ class HashMap:
         for i, (k, v) in enumerate(bucket):
             if k == key:
                 del bucket[i]
-                print(f"{key} eliminada.")
+                print(f"{key} eliminada")
                 return
 
-        print(f"{key} no encontrada.")
+        print(f"{key} no encontrada")
 
     def modificar(self, key, nuevo_value):
         indice = self.hash(key)
@@ -47,12 +47,12 @@ class HashMap:
         for i, (k, v) in enumerate(bucket):
             if k == key:
                 bucket[i] = (key, nuevo_value)
-                print(f"{key} actualizado {nuevo_value}.")
+                print(f"{key} modificado {nuevo_value}")
                 return
 
-        print(f"{key} no encontrada.")
+        print(f"{key} no encontrada")
 
     def mostrar(self):
-        print("HashMap:")
-        for i, bucket in enumerate(self.buckets):
-            print(f"Bucket {i}: {bucket}")
+        for bucket in self.buckets:
+            for key, value in bucket:
+                print(f"{key} : {value}")

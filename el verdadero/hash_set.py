@@ -13,7 +13,7 @@ class HashSet:
         if key not in bucket:
             bucket.append(key)
         else:
-            print(f"{key} ya existe.")
+            print(f"{key} ya existe")
 
     def eliminar(self, key):
         indice = self._hash(key)
@@ -21,9 +21,9 @@ class HashSet:
 
         if key in bucket:
             bucket.remove(key)
-            print(f"{key} eliminado.")
+            print(f"{key} eliminado")
         else:
-            print(f"{key} no encontrado.")
+            print(f"{key} no encontrado")
 
     def buscar(self, key):
         indice = self._hash(key)
@@ -32,9 +32,8 @@ class HashSet:
         return key in bucket
 
     def mostrar(self):
-        print("HashSet:")
         for i, bucket in enumerate(self.buckets):
-            print(f"Bucket {i}: {bucket}")
+            print(f"{bucket}")
 
 
 

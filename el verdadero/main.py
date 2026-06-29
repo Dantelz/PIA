@@ -6,7 +6,7 @@ import hash_set
 import json
 from classpokemon import Pokemon
 from gyms import set_medals, select_gym, start_medals
-from teamandpc import mostrar_equipo, mostrar_pc, equipo
+from teamandpc import mostrar_equipo, menu_pc, equipo
 from captura import capturar_pokemon
 
 
@@ -31,7 +31,7 @@ def menu():
 
     
     while True:
-        time.sleep(1.3)
+        time.sleep(1.8)
         instance = hash_map.HashMap()
         for i in pokemondata:
             hash = instance.hash(i["id"]) 
@@ -39,7 +39,7 @@ def menu():
 
         print("1 >>> Ver Pokédex")
         print("2 >>> Ver Equipo Principal")
-        print("3 >>> Ver PC")
+        print("3 >>> PC")
         print("4 >>> Capturar nuevo Pokémon")
         print("5 >>> Ver Medallas")
         print("6 >>> Buscar Pokémon en Equipo")
@@ -50,11 +50,13 @@ def menu():
         print("11 >>> Salir del sistema")
 
 
-        eleccion= int(input("Cual sera tu proximo movimiento: "))
-        
+        try:
+                eleccion = int(input("Cual sera tu proximo movimiento: "))
+        except ValueError:
+                print("Error, por favor ingresar un numero")
+                continue        
         if eleccion == 1:
-            for clave, valor in instance.table.items():
-                print(f"{clave}: {valor}")
+            instance.mostrar()
 
         elif eleccion == 2:
             time.sleep(1)
@@ -62,7 +64,7 @@ def menu():
 
         elif eleccion == 3:
             time.sleep(1)
-            mostrar_pc()
+            menu_pc()
 
         elif eleccion == 4:
             time.sleep(1)
@@ -100,9 +102,9 @@ def starters():
     if eleccion.lower() == "bulbasaur":
         pokemon_inicial = Pokemon(1, "Bulbasaur", "Planta/Veneno", 318)
     elif eleccion.lower() == "charmander":
-        pokemon_inicial = Pokemon(4, "Charmander", "Fuego", 309)
+        pokemon_inicial = Pokemon(4, "Charmander", "Fuego", 314)
     elif eleccion.lower() == "squirtle":
-        pokemon_inicial = Pokemon(7, "Squirtle", "Agua", 314)
+        pokemon_inicial = Pokemon(7, "Squirtle", "Agua", 309)
     elif eleccion.lower() == "mudkip":
         pokemon_inicial = Pokemon(258, "Mudkip", "Agua", 320)
     else:
