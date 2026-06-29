@@ -8,6 +8,7 @@ from classpokemon import Pokemon
 from gyms import set_medals, select_gym, start_medals
 from teamandpc import mostrar_equipo, menu_pc, equipo
 from captura import capturar_pokemon
+from medico import centro_pokemon
 
 
 with open("el verdadero\\pokemon_data.json", "r", encoding="utf-8") as f:
@@ -54,7 +55,8 @@ def menu():
                 eleccion = int(input("Cual sera tu proximo movimiento: "))
         except ValueError:
                 print("Error, por favor ingresar un numero")
-                continue        
+                continue 
+               
         if eleccion == 1:
             instance.mostrar()
 
@@ -77,6 +79,10 @@ def menu():
                     print(f"{medalla['id']} - {medalla['nombre']}")
                 else:
                     print(f"{medalla['id']} - No obtenida")
+            
+        elif eleccion == 7:
+            centro_pokemon()
+
         elif eleccion == 10:
             time.sleep(1)
             select_gym(medallas)
