@@ -9,14 +9,13 @@ from gyms import set_medals, select_gym, start_medals
 from teamandpc import mostrar_equipo, menu_pc, equipo
 from captura import capturar_pokemon
 from medico import centro_pokemon
-
-
-with open("el verdadero\\pokemon_data.json", "r", encoding="utf-8") as f:
-    pokemondata = json.load(f)
+from pokedexmenu import menu_pokedex
 
 with open("el verdadero\\medallas.json", "r", encoding="utf-8") as f:
     medallas = json.load(f)
 
+with open("el verdadero\\pokemon_data.json", "r", encoding="utf-8") as f:
+    pokemondata = json.load(f)
 
 def main():
     os.system("cls")
@@ -32,11 +31,9 @@ def menu():
 
     
     while True:
-        time.sleep(1.8)
-        instance = hash_map.HashMap()
-        for i in pokemondata:
-            hash = instance.hash(i["id"]) 
-            instance.agregar(i["id"], i["nombre"])
+        time.sleep(2)
+        os.system("cls")
+        
 
         print("1 >>> Ver Pokédex")
         print("2 >>> Ver Equipo Principal")
@@ -58,7 +55,7 @@ def menu():
                 continue 
                
         if eleccion == 1:
-            instance.mostrar()
+            menu_pokedex()
 
         elif eleccion == 2:
             time.sleep(1)
