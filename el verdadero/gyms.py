@@ -3,12 +3,26 @@ import hash_set
 import time
 set_medals = hash_set.HashSet()
 
+def espera():
+    while True:
+        esp=input("\nPara volver al menu presione enter: ")
+        if esp=="":
+            break
+
 def battle():
     ops = ["Ganaste", "Perdiste","Ganaste", "Perdiste", "Ganaste", "Perdiste", "Ganaste"]
     return random.choice(ops)
 
 def select_gym(medallas):
-    id = int(input("Ingrese ID del gimnasio: "))
+    id = int(input("1 >>> Gimnasio Roca - Brock 🧱"
+                    "2 >>> Gimnasio Agua - Misty 💧"
+                    "3 >>> Gimnasio Electrico - Lt. Surge ⚡"
+                    "4 >>> Gimnasio Planta - Erika 🌿"
+                    "5 >>> Gimnasio Veneno - Koga ☠️"
+                    "6 >>> Gimnasio Psiquico - Sabrina 🔮"
+                    "7 >>> Gimnasio Fuego - Blaine 🔥"
+                    "8 >>> Gimnasio Tierra - Giovanni 🌎"
+                    "Ingrese ID del gimnasio contra el que desea luchar: "))
 
     if id not in range(1, 9):
         print("id invalido")
@@ -22,15 +36,14 @@ def select_gym(medallas):
         return
 
     resultado = battle()
-    time.sleep(1)
     print(resultado)
 
     if resultado == "Ganaste":
+        print(f"Has derrotado al lider, Conseguiste la {medal_name}")
         set_medals.agregar(medal_name)
-        time.sleep(1)
-        print(f"Ganaste la {medal_name}")
     else:
-        time.sleep(1)
+        print("Has sido derrotado por el lider, mejor suerte la proxima")
+    espera()
 
 def start_medals(medallas):
     cant = 0

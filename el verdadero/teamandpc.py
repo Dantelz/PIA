@@ -1,4 +1,13 @@
 import time
+import os
+from sorts import quick_sort_poder, selection_sort_tipo, bubble_sort_nombre
+
+
+def espera():
+    while True:
+        esp=input("\nPara volver al menu presione enter: ")
+        if esp=="":
+            break
 
 class Nodo:
     def __init__(self, pokemon):
@@ -44,10 +53,20 @@ class Llinkedlist:
             actual = actual.siguiente
 
         return lista
+    
+    def buscar_nombre(self, nombre):
+        actual = self.head
+
+        while actual:
+            if actual.pokemon.nombre.lower() == nombre.lower():
+                return actual.pokemon
+            actual = actual.siguiente
+
+        return None
 
 def menu_pc():
     while True:
-        time.sleep(1.3)
+        os.system("cls")
         print("1 >>> Ver PC")
         print("2 >>> Ordenar PC")
         print("3 >>> Volver al menu principal")
@@ -60,6 +79,7 @@ def menu_pc():
 
         if op == 1:
             mostrar_pc()
+            espera()
 
         elif op == 2:
             ordenar_pc()
@@ -67,46 +87,11 @@ def menu_pc():
         elif op == 3:
             break
 
-def bubble_sort_nombre(lista):
-        n = len(lista)
-
-        for i in range(n):
-            for j in range(0, n - i - 1):
-                if lista[j].nombre > lista[j + 1].nombre:
-                    lista[j], lista[j + 1] = lista[j + 1], lista[j]
-
-        return lista
-
-def selection_sort_tipo(lista):
-    n = len(lista)
-
-    for i in range(n):
-        min_idx = i
-
-        for j in range(i + 1, n):
-            if lista[j].tipo < lista[min_idx].tipo:
-                min_idx = j
-
-        lista[i], lista[min_idx] = lista[min_idx], lista[i]
-
-    return lista
-
-def quick_sort_poder(lista):
-    if len(lista) <= 1:
-        return lista
-
-    pivot = lista[len(lista) // 2].poder_combate
-
-    mayores = [x for x in lista if x.poder_combate > pivot]
-    iguales = [x for x in lista if x.poder_combate == pivot]
-    menores = [x for x in lista if x.poder_combate < pivot]
-
-    return quick_sort_poder(mayores) + iguales + quick_sort_poder(menores)
-
 
 def ordenar_pc():
     while True:
         time.sleep(1.3)
+        os.system("cls")
         print("1 >>> Orden alfabetico")
         print("2 >>> Orden por tipo")
         print("3 >>> Orden competitivo")
@@ -124,19 +109,22 @@ def ordenar_pc():
             lista = bubble_sort_nombre(lista)
             for pokemon in lista:
                 print(f"{pokemon.id} - {pokemon.nombre} - {pokemon.tipo} - {pokemon.poder_combate}")
+            espera()
 
         elif op == 2:
             lista = selection_sort_tipo(lista)
             for pokemon in lista:
                 print(f"{pokemon.id} - {pokemon.nombre} - {pokemon.tipo} - {pokemon.poder_combate}")
+            espera()
 
         elif op == 3:
             lista = quick_sort_poder(lista)
             for pokemon in lista:
                 print(f"{pokemon.id} - {pokemon.nombre} - {pokemon.tipo} - {pokemon.poder_combate}")
+            espera()
 
         elif op == 4:
-            menu_pc()
+            break
 
 
 equipo = []
@@ -153,3 +141,28 @@ def mostrar_equipo():
 
 def mostrar_pc():
     pc.mostrar()
+
+
+def buscar_pokemon():
+    nombre_pokemon = input("Ingrese Nombre del Pokemon: ")
+    print("Buscando estre sus Pokemomes...")
+
+    for pokemon in equipo:
+        if pokemon.nombre.lower() == nombre_pokemon.lower():
+            time.sleep(1)
+            print("Ese Pokemon esta en el equipo titular")
+            print(f"{pokemon.nombre} | {pokemon.tipo} | {pokemon.poder_combate}")
+            espera()
+            return
+        
+    pokemon_pc = pc.buscar_nombre(nombre_pokemon)
+
+    if pokemon_pc:
+        time.sleep(1)
+        print("Ese Pokemon esta en la PC")
+        print(f"{pokemon_pc.nombre} | {pokemon_pc.tipo} | {pokemon_pc.poder_combate}")
+    else:
+        time.sleep(1)
+        print("Ese Pokemon no fue encontrado ni en el Equipo ni en la PC")
+    
+    espera()

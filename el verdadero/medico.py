@@ -1,6 +1,12 @@
 import time
 from teamandpc import equipo
 
+def espera():
+    while True:
+        esp=input("\nPara volver al menu presione enter: ")
+        if esp=="":
+            break
+
 def centro_pokemon():
     if len(equipo) == 0:
         print("No tenes pokemon en tu equipo")
@@ -30,3 +36,4 @@ def centro_pokemon():
 
     print(f"Listo. El proceso de curacion de {pokemon.nombre} se completo con exito.")
     print(f"{pokemon.nombre} esta listo para combatir.")
+    espera()

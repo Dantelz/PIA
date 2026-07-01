@@ -2,7 +2,11 @@ from classpokemon import Pokemon
 from teamandpc import equipo, pc
 import time
 
-
+def espera():
+    while True:
+        esp=input("\nPara volver al menu presione enter: ")
+        if esp=="":
+            break
 
 def capturar_pokemon(pokemondata):
     id_buscado = int(input("Ingrese ID del Pokémon que queres capturar: "))
@@ -17,8 +21,9 @@ def capturar_pokemon(pokemondata):
             )
             break
 
-    if pokemon_encontrado.id not in range(1, 152):
+    if id_buscado not in range(1, 152):
         print("No existe un Pokémon con ese ID")
+        espera()
         return
     
     else:
@@ -35,3 +40,5 @@ def capturar_pokemon(pokemondata):
             pc.agregar(pokemon_encontrado)
             time.sleep(1)
             print(f"{pokemon_encontrado.nombre} fue enviado a la PC")
+        
+    espera()
