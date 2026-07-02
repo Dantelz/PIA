@@ -48,6 +48,7 @@ def menu_pokedex():
 
             if resultado is None:
                 print("No existe un Pokemon con ese ID")
+                espera()
 
             else:
                 pokemon_buscado = Pokemon(
@@ -81,4 +82,4 @@ def busqueda_binaria(lista, id_buscado):
         else:
             derecha = medio - 1
 
-    return 
+    return None

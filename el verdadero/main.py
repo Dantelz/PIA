@@ -10,6 +10,7 @@ from captura import capturar_pokemon
 from medico import centro_pokemon
 from pokedexmenu import menu_pokedex
 import time
+from transfers import menu_transfers
 
 with open("el verdadero\\medallas.json", "r", encoding="utf-8") as f:
     medallas = json.load(f)
@@ -44,9 +45,8 @@ def menu():
         print("6 >>> Buscar Pokémon en Equipo/PC")
         print("7 >>> Enviar Pokémon al Centro Pokémon")
         print("8 >>> Transferir Pokémon al Profesor Oak")
-        print("9 >>> Deshacer última transferencia")
-        print("10 >>> Desafiar Líder de Gimnasio")
-        print("11 >>> Salir del sistema")
+        print("9 >>> Desafiar Líder de Gimnasio")
+        print("10 >>> Salir del sistema")
 
 
         try:
@@ -81,10 +81,13 @@ def menu():
         elif eleccion == 7:
             centro_pokemon()
 
-        elif eleccion == 10:
+        elif eleccion == 8:
+            menu_transfers()
+
+        elif eleccion == 9:
             select_gym(medallas)
         
-        elif eleccion == 11:
+        elif eleccion == 10:
             print("Saliendo del sistema...Gracias por jugar")
             sys.exit()
         else:  

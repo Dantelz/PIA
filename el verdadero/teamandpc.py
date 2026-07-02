@@ -63,13 +63,34 @@ class Llinkedlist:
             actual = actual.siguiente
 
         return None
+    
+    def eliminar_pokemon(self, nombre):
+        if self.head is None:
+            return None
+
+        if self.head.pokemon.nombre.lower() == nombre.lower():
+            pokemon = self.head.pokemon
+            self.head = self.head.siguiente
+            return pokemon
+
+        actual = self.head
+
+        while actual.siguiente:
+            if actual.siguiente.pokemon.nombre.lower() == nombre.lower():
+                pokemon = actual.siguiente.pokemon
+                actual.siguiente = actual.siguiente.siguiente
+                return pokemon
+            actual = actual.siguiente
+
+        return None
 
 def menu_pc():
     while True:
         os.system("cls")
         print("1 >>> Ver PC")
         print("2 >>> Ordenar PC")
-        print("3 >>> Volver al menu principal")
+        print("3 >>> Buscar Pokémon en PC")
+        print("4 >>> Volver al menu principal")
 
         try:
                 op = int(input("Que necesitas: "))
@@ -85,6 +106,9 @@ def menu_pc():
             ordenar_pc()
 
         elif op == 3:
+            buscar_pokemon()
+
+        elif op == 4:
             break
 
 
@@ -157,12 +181,48 @@ def buscar_pokemon():
         
     pokemon_pc = pc.buscar_nombre(nombre_pokemon)
 
-    if pokemon_pc:
+    if pokemon_pc != None:
         time.sleep(1)
         print("Ese Pokemon esta en la PC")
         print(f"{pokemon_pc.nombre} | {pokemon_pc.tipo} | {pokemon_pc.poder_combate}")
+
+        op = input("Queres pasarlo al equipo? (1>>>Si/2>>>No): ")
+
+        if op == "1":
+            teampcmove(pokemon_pc)
+
     else:
         time.sleep(1)
         print("Ese Pokemon no fue encontrado ni en el Equipo ni en la PC")
     
+    espera()
+
+def teampcmove(pokemon_pc):
+    if len(equipo) == 0:
+        print("No hay pokemon en el equipo")
+        return
+
+    print("Equipo actual:")
+    for i, pokemon in enumerate(equipo):
+        print(f"{i+1} - {pokemon.nombre}")
+
+    try:
+        op = int(input("Ingrese el numero del Pokemon que desea sacar del equipo: "))
+    except ValueError:
+        print("Ingrese un numero")
+        return
+
+    if op < 1 or op > len(equipo):
+        print("Opcion invalida")
+        return
+
+    pokemon_sacado = equipo.pop(op - 1)
+
+    pc.agregar(pokemon_sacado)
+    pc.eliminar_pokemon(pokemon_pc.nombre)
+
+    equipo.append(pokemon_pc)
+
+    print(f"{pokemon_sacado.nombre} fue enviado a la PC")
+    print(f"{pokemon_pc.nombre} entro al Equipo Titular")
     espera()
